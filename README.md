@@ -1,29 +1,11 @@
-# README #
+# REST Api Examples
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Shows examples on how to invoke the sanctions.io REST api from popular programming languages.
 
-### What is this repository for? ###
+### Java ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Uses `mvn` for dependency managements and **Apache HttpComponents** and **org.json** to make the REST calls.
 
-### How do I get set up? ###
+### NodeJS / Javascript ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Uses `npm` for dependency managements and **axios** to make the REST calls.
