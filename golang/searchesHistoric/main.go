@@ -6,6 +6,7 @@ import (
     "io/ioutil"
     "log"
     "net/http"
+    "strings"
 )
 
 const (
@@ -34,7 +35,12 @@ func invokeSearchesHistoric() (map[string]interface{}, error) {
 
     query := req.URL.Query()
     query.Add("timestamp", "2021-01-21T16:00:00+01:00")
-    req.URL.RawQuery = query.Encode()
+    query.Add("result_count", "10")
+
+    rawQuery := query.Encode()
+    rawQuery = strings.ReplaceAll(rawQuery, "&", "%26")
+    rawQuery = strings.ReplaceAll(rawQuery, "=", "%3D")
+    req.URL.RawQuery = rawQuery
 
     req.Header.Add("Accept", fmt.Sprintf("application/json; version=%s", apiVersion))
     req.Header.Add("Authorization", bearerToken)
