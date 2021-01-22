@@ -40,7 +40,7 @@ func invokeSearchesHistoric() (map[string]interface{}, error) {
     rawQuery := query.Encode()
     rawQuery = strings.ReplaceAll(rawQuery, "&", "%26")
     rawQuery = strings.ReplaceAll(rawQuery, "=", "%3D")
-    req.URL.RawQuery = rawQuery
+    req.URL.RawQuery = query.Encode()
 
     req.Header.Add("Accept", fmt.Sprintf("application/json; version=%s", apiVersion))
     req.Header.Add("Authorization", bearerToken)
