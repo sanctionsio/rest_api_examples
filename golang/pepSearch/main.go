@@ -6,7 +6,6 @@ import (
     "io/ioutil"
     "log"
     "net/http"
-    "strings"
 )
 
 const (
@@ -16,26 +15,26 @@ const (
 )
 
 func main() {
-    data, err := invokePlans()
+    data, err := invokePepSearch()
     if err != nil {
         log.Fatal(err)
     } else {
-        results := data["results"].([]interface {})
-        names := make([]string, len(results))
-        for i, result := range results {
-            names[i] = result.(map[string]interface{})["plan_name"].(string)
-        }
-        log.Printf("Plans found: %s", strings.Join(names, ","))
+        count := data["count"]
+        log.Printf("Counting %v results.", count)
     }
 }
 
-// Example showing how to invoke the /plans function in the sanctions.io REST api
-func invokePlans() (map[string]interface{}, error) {
+// Example showing how to invoke the /pep-search function in the sanctions.io REST api
+func invokePepSearch() (map[string]interface{}, error) {
     client := &http.Client{}
-    req, err := http.NewRequest("GET", fmt.Sprintf("https://%s/plans", hostname), nil)
+    req, err := http.NewRequest("GET", fmt.Sprintf("https://%s/pep-search", hostname), nil)
     if err != nil {
         return nil, err
     }
+
+    query := req.URL.Query()
+    query.Add("name", "obama")
+    req.URL.RawQuery = query.Encode()
 
     req.Header.Add("Accept", fmt.Sprintf("application/json; version=%s", apiVersion))
     req.Header.Add("Authorization", bearerToken)
@@ -43,6 +42,8 @@ func invokePlans() (map[string]interface{}, error) {
 
     if err != nil {
         return nil, err
+    } else if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+        return nil, fmt.Errorf("server responded with status: %d", resp.StatusCode)
     }
 
     body, err := ioutil.ReadAll(resp.Body)
