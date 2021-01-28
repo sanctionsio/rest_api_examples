@@ -42,4 +42,3 @@ def invoke_searches_historic():
 if __name__ == '__main__':
     json_data = invoke_searches_historic()
     logger.info(f"Found {json_data.get('count', 0)} results.")
-    logger.info(f"Found {json_data.get('results', [])} results.")
