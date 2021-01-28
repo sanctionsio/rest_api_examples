@@ -31,6 +31,6 @@ def invoke_pep_search():
 
 if __name__ == '__main__':
     json_data = invoke_pep_search()
-    logger.info(json_data)
     count = json_data.get('count', 0)
     logger.info(f'Counting {count} results.')
+    logger.info(f'Results {json_data.get("results", [])} found.')

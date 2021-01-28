@@ -1,6 +1,6 @@
 import logging
 import urllib.parse
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -24,11 +24,12 @@ def invoke_searches_historic():
         'Accept': f'application/json; version={API_VERSION}'
     }
 
-    current_datetime = datetime.now()
-    current_zoned_datetime = current_datetime.astimezone()
+    # we want to retrieve all previous requests from the las 30 days
+    from_datetime = datetime.now() - timedelta(days=30)
+    from_datetime_tz_aware = from_datetime.astimezone()
     payload = {
-        'timestamp': current_zoned_datetime.strftime('%Y-%m-%dT%H-%M-%S%z'),
-        'result_count': 10
+        'timestamp': from_datetime_tz_aware.strftime('%Y-%m-%dT%H-%M-%S%z'),
+        'result_count': 10,
     }
     params = urllib.parse.urlencode(payload)
     params = params.replace('&', '%26')
@@ -40,6 +41,5 @@ def invoke_searches_historic():
 
 if __name__ == '__main__':
     json_data = invoke_searches_historic()
-    logger.info(json_data)
-    results = json_data.get('results', [])
-    logger.info(f"Found {len(results)} results.")
+    logger.info(f"Found {json_data.get('count', 0)} results.")
+    logger.info(f"Found {json_data.get('results', [])} results.")

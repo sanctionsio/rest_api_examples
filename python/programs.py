@@ -34,7 +34,6 @@ def invoke_programs():
 
 if __name__ == '__main__':
     json_data = invoke_programs()
-    logger.info(json_data)
-    results = json_data.get('results', [])
-    names = [result.get('short_name') for result in results]
-    logger.info(f"Programs found: {','.join(names)}")
+    logger.info(f"Found {json_data.get('count', 0)} results.")
+    names = [result.get('short_name') for result in json_data.get('results', [])]
+    logger.info(f"Programs found: {', '.join(names)}")

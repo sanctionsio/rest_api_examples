@@ -32,6 +32,5 @@ def invoke_search():
 
 if __name__ == '__main__':
     json_data = invoke_search()
-    logger.info(json_data)
-    results = json_data.get('results', [])
-    logger.info(f'Found {len(results)} results.')
+    logger.info(f"Found {json_data.get('count', 0)} results.")
+    logger.info(f"Found {json_data.get('results', [])} results.")
