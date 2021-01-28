@@ -9,3 +9,7 @@ Uses `mvn` for dependency managements and **Apache HttpComponents** and **org.js
 ### NodeJS / Javascript ###
 
 Uses `npm` for dependency managements and **axios** to make the REST calls.
+
+### Python ###
+
+Uses pip for package management and **requests** to make the REST calls.
