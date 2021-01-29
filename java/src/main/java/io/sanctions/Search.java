@@ -1,13 +1,11 @@
 package io.sanctions;
 
-import org.apache.hc.client5.http.ClientProtocolException;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.*;
+import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
