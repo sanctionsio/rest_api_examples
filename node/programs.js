@@ -10,18 +10,9 @@ axios.get(uri, {
         'Authorization': bearerToken,
         'Accept': `application/json; version=${apiVersion}`,
     },
+}).then(response => {
+    let json = response.data;
+    let results = json.results;
+    let programNames = results.map(program => program["short_name"]);
+    console.log(`Programs found: ${programNames.join(', ')}.`)
 })
-    .then(response => {
-        let status = response.status;
-        if (status >= 200 && status < 300) {
-            let json = response.data;
-            let results = json.results;
-            let programNames = results.map(program => program["short_name"]);
-            console.log(`Programs found: ${programNames.join()}.`)
-        } else {
-            console.error(`Server responded with status: ${status}`)
-        }
-    })
-    .catch(err => {
-        console.error(`Error calling ${uri}: ${err}`)
-    })

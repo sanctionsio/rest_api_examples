@@ -13,17 +13,7 @@ axios.get(uri, {
     params: {
         name: 'obama',
     }
-})
-    .then(response => {
-        let status = response.status;
-        if (status >= 200 && status < 300) {
-            let json = response.data;
-            let count = json.count;
-            console.log(`Counting ${count} results.`)
-        } else {
-            console.error(`Server responded with status: ${status}`)
-        }
-    })
-    .catch(err => {
-        console.error(`Error calling ${uri}: ${err}`)
-    })
+}).then(response => {
+    let json = response.data;
+    console.log(`Counting ${json.count} results.`)
+});

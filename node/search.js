@@ -14,17 +14,7 @@ axios.get(uri, {
         name: 'juan',
         countries: 'FR'
     }
+}).then(response => {
+    let json = response.data;
+    console.log(`Found ${json.count} results.`)
 })
-    .then(response => {
-        let status = response.status;
-        if (status >= 200 && status < 300) {
-            let json = response.data;
-            let results = json.results;
-            console.log(`Found ${results.length} results.`)
-        } else {
-            console.error(`Server responded with status: ${status}`)
-        }
-    })
-    .catch(err => {
-        console.error(`Error calling ${uri}: ${err}`)
-    })
