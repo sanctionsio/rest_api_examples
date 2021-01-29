@@ -46,20 +46,7 @@ public class Plans {
                     .setHeader("Accept", String.format("application/json; version=%s", API_VERSION))
                     .build();
 
-            HttpClientResponseHandler<String> responseHandler = response -> {
-                int status = response.getCode();
-                if (status >= HttpStatus.SC_SUCCESS && status < HttpStatus.SC_REDIRECTION) {
-                    HttpEntity entity = response.getEntity();
-                    try {
-                        return entity != null ? EntityUtils.toString(entity) : null;
-                    } catch (final ParseException e) {
-                        throw new ClientProtocolException(e);
-                    }
-                } else {
-                    throw new ClientProtocolException(String.format("Server responded with status: %d", status));
-                }
-            };
-
+            HttpClientResponseHandler<String> responseHandler = response -> EntityUtils.toString(response.getEntity());
             String jsonString = client.execute(request, responseHandler);
             return new JSONObject(jsonString);
         }
