@@ -22,14 +22,9 @@ def invoke_programs():
         'Authorization': f'Bearer {BEARER_TOKEN}',
         'Accept': f'application/json; version={API_VERSION}'
     }
-    try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
-    except (HTTPError, Exception):
-        logger.exception(f'GET {url} failed.')
-        return {}
-    else:
-        return response.json()
+
+    response = requests.get(url, headers=headers)
+    return response.json()
 
 
 if __name__ == '__main__':
