@@ -13,3 +13,7 @@ Uses `npm` for dependency managements and **axios** to make the REST calls.
 ### Python ###
 
 Uses pip for package management and **requests** to make the REST calls.
+
+### Golang ###
+
+Only uses standard go packages to make the REST calls.

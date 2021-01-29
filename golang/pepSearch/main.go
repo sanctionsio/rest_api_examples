@@ -19,8 +19,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     } else {
-        count := data["count"]
-        log.Printf("Counting %v results.", count)
+        log.Printf("Counting %v results.", data["count"])
     }
 }
 
@@ -42,8 +41,6 @@ func invokePepSearch() (map[string]interface{}, error) {
 
     if err != nil {
         return nil, err
-    } else if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-        return nil, fmt.Errorf("server responded with status: %d", resp.StatusCode)
     }
 
     body, err := ioutil.ReadAll(resp.Body)

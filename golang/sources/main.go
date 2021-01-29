@@ -25,7 +25,7 @@ func main() {
         for i, result := range results {
             names[i] = result.(map[string]interface{})["short_name"].(string)
         }
-        log.Printf("Sources found: %s", strings.Join(names, ","))
+        log.Printf("Sources found: %s", strings.Join(names, ", "))
     }
 }
 
@@ -43,8 +43,6 @@ func invokeSources() (map[string]interface{}, error) {
 
     if err != nil {
         return nil, err
-    } else if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-        return nil, fmt.Errorf("server responded with status: %d", resp.StatusCode)
     }
 
     body, err := ioutil.ReadAll(resp.Body)

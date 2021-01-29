@@ -19,8 +19,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     } else {
-        results := data["results"].([]interface {})
-        log.Printf("Found %d results.", len(results))
+        log.Printf("Found %v results.", data["count"])
     }
 }
 
@@ -43,8 +42,6 @@ func invokeSearch() (map[string]interface{}, error) {
 
     if err != nil {
         return nil, err
-    } else if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-        return nil, fmt.Errorf("server responded with status: %d", resp.StatusCode)
     }
 
     body, err := ioutil.ReadAll(resp.Body)
