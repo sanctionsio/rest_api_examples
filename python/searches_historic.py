@@ -1,11 +1,10 @@
 import logging
-import urllib.parse
 from datetime import datetime, timedelta
 
 import requests
 
-HOSTNAME = 'sandbox.sanctions.io'
-BEARER_TOKEN = 'ded11a1cbd164242b6bb28c51f1dad5f'
+HOSTNAME = 'localhost:8000'
+BEARER_TOKEN = '1ecdbe21c1c14627a449339ee683bc9f'
 API_VERSION = '1.0'
 
 logging.basicConfig()
@@ -18,7 +17,7 @@ def invoke_searches_historic():
     Example showing how to call the /searches/historic endpoint.
     :return: dict
     """
-    url = f'https://{HOSTNAME}/searches/historic'
+    url = f'http://{HOSTNAME}/searches/historic'
     headers = {
         'Authorization': f'Bearer {BEARER_TOKEN}',
         'Accept': f'application/json; version={API_VERSION}'
@@ -28,14 +27,11 @@ def invoke_searches_historic():
     from_datetime = datetime.now() - timedelta(days=30)
     from_datetime_tz_aware = from_datetime.astimezone()
     payload = {
-        'timestamp': from_datetime_tz_aware.strftime('%Y-%m-%dT%H-%M-%S%z'),
-        'result_count': 10,
+        'timestamp': from_datetime_tz_aware.isoformat(),
+        'result_count': 1,
     }
-    params = urllib.parse.urlencode(payload)
-    params = params.replace('&', '%26')
-    params = params.replace('=', '%3D')
 
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=payload)
     return response.json()
 
 
