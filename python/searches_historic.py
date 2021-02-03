@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 
 import requests
 
-HOSTNAME = 'localhost:8000'
-BEARER_TOKEN = '1ecdbe21c1c14627a449339ee683bc9f'
+HOSTNAME = 'sandbox.sanctions.io'
+BEARER_TOKEN = 'ded11a1cbd164242b6bb28c51f1dad5f'
 API_VERSION = '1.0'
 
 logging.basicConfig()
@@ -17,13 +17,13 @@ def invoke_searches_historic():
     Example showing how to call the /searches/historic endpoint.
     :return: dict
     """
-    url = f'http://{HOSTNAME}/searches/historic'
+    url = f'https://{HOSTNAME}/searches/historic'
     headers = {
         'Authorization': f'Bearer {BEARER_TOKEN}',
         'Accept': f'application/json; version={API_VERSION}'
     }
 
-    # we want to retrieve all previous requests from the las 30 days
+    # we want to retrieve all previous requests from the last 30 days
     from_datetime = datetime.now() - timedelta(days=30)
     from_datetime_tz_aware = from_datetime.astimezone()
     payload = {
