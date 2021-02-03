@@ -12,11 +12,8 @@ axios.get(uri, {
         'Accept': `application/json; version=${apiVersion}`,
     },
     params: {
-        timestamp: '2021-01-21T16:48:08+01:00',
-        result_count: 10,
-    },
-    paramsSerializer: params => {
-        return qs.stringify(params, qs.escape('&'))
+        timestamp: '2021-01-04T15:56:41.210100+01:00',
+        result_count: 1,
     }
 }).then(response => {
     let json = response.data;

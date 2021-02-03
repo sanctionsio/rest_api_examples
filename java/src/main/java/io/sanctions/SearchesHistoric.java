@@ -29,10 +29,8 @@ public class SearchesHistoric {
      * Example showing how to call the {@code /searches/historic} function.
      */
     private static JSONObject invokeSearchesHistoric() throws IOException {
-        ZonedDateTime currentDateTime = ZonedDateTime.now();
-        String isoDate = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX", Locale.getDefault()));
-        String queryString = URLEncoder.encode(String.format("timestamp=%s&result_count=10", isoDate), StandardCharsets.UTF_8);
-        String uri = String.format("https://%s/searches/historic?%s", HOSTNAME, queryString);
+        String isoDate = "2021-01-04T15:56:41.210100+01:00";
+        String uri = String.format("https://%s/searches/historic?timestamp=%s&result_count=%d", HOSTNAME, isoDate, 1);
 
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             ClassicHttpRequest request = ClassicRequestBuilder.get()
