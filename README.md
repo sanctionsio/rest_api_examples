@@ -17,3 +17,7 @@ Uses `pip` for package management and **requests** to make the REST calls.
 ### Golang ###
 
 Only uses standard go packages to make the REST calls.
+
+### Swagger documentation ###
+
+https://app.swaggerhub.com/apis-docs/Sanctions.IO/sanctions-io_api/d8b6c665-a2e7-4346-a53b-c56c0f0210ed
