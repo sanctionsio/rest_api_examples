@@ -14,9 +14,9 @@ import java.util.StringJoiner;
 import java.util.stream.IntStream;
 
 public class Programs {
-    private static final String HOSTNAME = "sandbox.sanctions.io";
-    private static final String BEARER_TOKEN = "Bearer ded11a1cbd164242b6bb28c51f1dad5f";
-    private static final String API_VERSION = "1.0";
+    private static final String HOSTNAME = "api.sanctions.io";
+    private static final String BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f";
+    private static final String API_VERSION = "2.0";
 
     public static void main(String[] args) throws IOException {
         JSONObject response = Programs.invokePrograms();
@@ -39,7 +39,7 @@ public class Programs {
             String uri = String.format("https://%s/programs", HOSTNAME);
             ClassicHttpRequest request = ClassicRequestBuilder.get()
                     .setUri(uri)
-                    .setHeader("Authorization", BEARER_TOKEN)
+                    .setHeader("Authorization", String.format("Bearer %s", BEARER_TOKEN))
                     .setHeader("Accept", String.format("application/json; version=%s", API_VERSION))
                     .build();
 

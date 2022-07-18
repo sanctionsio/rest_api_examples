@@ -2,9 +2,9 @@ import logging
 
 import requests
 
-HOSTNAME = 'sandbox.sanctions.io'
-BEARER_TOKEN = 'ded11a1cbd164242b6bb28c51f1dad5f'
-API_VERSION = '1.0'
+HOSTNAME = "api.sanctions.io"
+BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f"
+API_VERSION = "2.0"
 
 logging.basicConfig()
 logger = logging.getLogger()
@@ -17,10 +17,10 @@ def invoke_export():
 
     :return: bytes
     """
-    url = f'https://{HOSTNAME}/exporter/'
+    url = f"https://{HOSTNAME}/exporter/"
     headers = {
-        'Authorization': f'Bearer {BEARER_TOKEN}',
-        'Accept': f'application/json; version={API_VERSION}'
+        "Authorization": f"Bearer {BEARER_TOKEN}",
+        "Accept": f"application/json; version={API_VERSION}",
     }
 
     response = requests.get(url, headers=headers)
@@ -28,9 +28,9 @@ def invoke_export():
     return response.content
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     file_content = invoke_export()
-    file_name = 'export.csv'
-    with open(file_name, 'wb') as export_file:
+    file_name = "export.csv"
+    with open(file_name, "wb") as export_file:
         export_file.write(file_content)
-    logger.info('file successfuly donwloaded %s', file_name)
+    logger.info("file successfully downloaded %s", file_name)
