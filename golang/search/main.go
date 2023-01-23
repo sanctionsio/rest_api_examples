@@ -11,7 +11,7 @@ import (
 const (
 	hostname    = "api.sanctions.io"
 	bearerToken = "ded11a1cbd164242b6bb28c51f1dad5f"
-	apiVersion  = "2.0"
+	apiVersion  = "2.1"
 )
 
 func main() {
@@ -34,6 +34,7 @@ func invokeSearch() (map[string]interface{}, error) {
 	query := req.URL.Query()
 	query.Add("name", "juan")
 	query.Add("country_residence", "FR")
+	query.Add("data_source", "ALL")
 	req.URL.RawQuery = query.Encode()
 
 	req.Header.Add("Accept", fmt.Sprintf("application/json; version=%s", apiVersion))

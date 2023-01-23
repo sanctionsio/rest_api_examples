@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Search {
     private static final String HOSTNAME = "api.sanctions.io";
     private static final String BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f";
-    private static final String API_VERSION = "2.0";
+    private static final String API_VERSION = "2.1";
 
     public static void main(String[] args) throws IOException {
         JSONObject response = Search.invokeSearch();
@@ -25,7 +25,7 @@ public class Search {
      */
     private static JSONObject invokeSearch() throws IOException {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
-            String uri = String.format("https://%s/search?name=juan&country_residence=FR", HOSTNAME);
+            String uri = String.format("https://%s/search?name=juan&country_residence=FR&data_source=ALL", HOSTNAME);
             ClassicHttpRequest request = ClassicRequestBuilder.get()
                     .setUri(uri)
                     .setHeader("Authorization", String.format("Bearer %s", BEARER_TOKEN))

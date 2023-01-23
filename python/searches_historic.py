@@ -5,7 +5,7 @@ import requests
 
 HOSTNAME = "api.sanctions.io"
 BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f"
-API_VERSION = "2.0"
+API_VERSION = "2.1"
 
 logging.basicConfig()
 logger = logging.getLogger()

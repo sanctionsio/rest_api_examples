@@ -4,7 +4,7 @@ import requests
 
 HOSTNAME = "api.sanctions.io"
 BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f"
-API_VERSION = "2.0"
+API_VERSION = "2.1"
 
 logging.basicConfig()
 logger = logging.getLogger()
@@ -22,8 +22,9 @@ def invoke_search():
         "Accept": f"application/json; version={API_VERSION}",
     }
     params = {
-        "name": "juan",
+        "name": "Juan",
         "country_residence": "FR",
+        "data_source": "ALL",
     }
 
     response = requests.get(url, headers=headers, params=params)

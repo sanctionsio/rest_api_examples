@@ -11,7 +11,7 @@ import (
 const (
 	hostname    = "api.sanctions.io"
 	bearerToken = "ded11a1cbd164242b6bb28c51f1dad5f"
-	apiVersion  = "2.0"
+	apiVersion  = "2.1"
 )
 
 func main() {

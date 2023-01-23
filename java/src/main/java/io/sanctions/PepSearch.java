@@ -13,7 +13,7 @@ import java.io.IOException;
 public class PepSearch {
     private static final String HOSTNAME = "api.sanctions.io";
     private static final String BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f";
-    private static final String API_VERSION = "2.0";
+    private static final String API_VERSION = "2.1";
 
     public static void main(String[] args) throws IOException {
         JSONObject response = PepSearch.invokePepSearch();

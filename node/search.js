@@ -2,7 +2,7 @@ const axios = require("axios")
 
 const hostname = "api.sanctions.io"
 const bearerToken = "ded11a1cbd164242b6bb28c51f1dad5f"
-const apiVersion = "2.0"
+const apiVersion = "2.1"
 
 let uri = `https://${hostname}/search`
 axios
@@ -14,6 +14,7 @@ axios
     params: {
       name: "juan",
       country_residence: "FR",
+      data_source: "ALL",
     },
   })
   .then((response) => {
