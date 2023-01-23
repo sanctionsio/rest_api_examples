@@ -23,7 +23,7 @@ def invoke_search():
     }
     params = {
         "name": "juan",
-        "countries": "FR",
+        "country_residence": "FR",
     }
 
     response = requests.get(url, headers=headers, params=params)

@@ -33,7 +33,7 @@ func invokeSearch() (map[string]interface{}, error) {
 
 	query := req.URL.Query()
 	query.Add("name", "juan")
-	query.Add("countries", "FR")
+	query.Add("country_residence", "FR")
 	req.URL.RawQuery = query.Encode()
 
 	req.Header.Add("Accept", fmt.Sprintf("application/json; version=%s", apiVersion))

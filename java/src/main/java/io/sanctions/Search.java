@@ -25,7 +25,7 @@ public class Search {
      */
     private static JSONObject invokeSearch() throws IOException {
         try (CloseableHttpClient client = HttpClients.createDefault()) {
-            String uri = String.format("https://%s/search?name=juan&countries=FR", HOSTNAME);
+            String uri = String.format("https://%s/search?name=juan&country_residence=FR", HOSTNAME);
             ClassicHttpRequest request = ClassicRequestBuilder.get()
                     .setUri(uri)
                     .setHeader("Authorization", String.format("Bearer %s", BEARER_TOKEN))
