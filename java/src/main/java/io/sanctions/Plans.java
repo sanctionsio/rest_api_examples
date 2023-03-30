@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 
 public class Plans {
     private static final String HOSTNAME = "api.sanctions.io";
-    private static final String BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f";
+    private static final String BEARER_TOKEN = "12345678-12AF-12aF-12aF-1234567890aF";
     private static final String API_VERSION = "2.1";
 
     public static void main(String[] args) throws IOException {

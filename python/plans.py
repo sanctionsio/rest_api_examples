@@ -3,7 +3,7 @@ import logging
 import requests
 
 HOSTNAME = "api.sanctions.io"
-BEARER_TOKEN = "ded11a1cbd164242b6bb28c51f1dad5f"
+BEARER_TOKEN = "12345678-12AF-12aF-12aF-1234567890aF"
 API_VERSION = "2.1"
 
 logging.basicConfig()
